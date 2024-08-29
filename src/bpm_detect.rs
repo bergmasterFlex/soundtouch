@@ -1,5 +1,6 @@
 use core::ptr::null_mut;
 
+#[allow(unused_imports)]
 use ffi::{BPMDetect as BPMDetectSys, BPMDetect_BPMDetect_destructor};
 use libc::c_int;
 use soundtouch_ffi as ffi;
@@ -125,6 +126,7 @@ impl BPMDetect {
 }
 
 #[cfg(not(windows))]
+        #[allow(dead_code)]
 impl Drop for BPMDetect {
     fn drop(&mut self) {
         unsafe { BPMDetect_BPMDetect_destructor(&mut self.0) }
